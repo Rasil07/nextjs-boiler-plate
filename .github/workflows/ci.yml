@@ -24,7 +24,10 @@ jobs:
           node-version: '20'
           cache: 'yarn'
       - name: Enable Corepack (uses packageManager field)
-        run: corepack enable
+        run: |
+          corepack enable
+          corepack prepare yarn@4.12.0 --activate
+          yarn -v
 
       - name: Install dependencies
         run: yarn install --immutable
